@@ -1,0 +1,18 @@
+.contenitore {
+        display: none;
+      }
+
+      .griglia {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .contenitore img,
+      .contenitore video {
+        width: 50%;
+        height: auto;
+      }
+
+    
