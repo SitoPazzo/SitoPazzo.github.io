@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Esempio Pulsanti</title>
+    <style>
+      .contenitore {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="css.css">
+  </head>
+  <body>
+    <h1>Esempio Pulsanti</h1>
+
+    <button onclick="mostraContenuto(contenitore1)">2 froci</button>
+    <button onclick="mostraContenuto(contenitore2)">matteo nicotra</button>
+    <button onclick="mostraContenuto(contenitore3)"><span>Francesco totti</span><img src="download.png" width="50"></button>
+    
+    <div id="contenitore1" class="contenitore">
+      <img src="immagine1.jpg">
+      <audio src="suono1.mp3"></audio>
+      <video src="video1.mp4"></video>
+    </div>
+
+    <div id="contenitore2" class="contenitore">
+      <img src="immagine2.jpg">
+      <audio src="suono2.mp3"></audio>
+      <video src="video2.mp4"></video>
+    </div>
+
+    <div id="contenitore3" class="contenitore">
+        
+        <div class="griglia">
+          <img src="immagine3.jpg">
+          <video src="video3.mp4" autoplay muted></video>
+        </div>
+        <audio src="suono3.mp3"></audio>
+      </div>
+
+    <script>
+      function mostraContenuto(contenitore) {
+        // Nascondi tutti i contenitori e interrompi la riproduzione dei suoni e dei video
+        nascondiContenitori();
+
+        // Mostra il contenitore specificato
+        contenitore.style.display = "block";
+
+        // Riproduci il suono del contenitore, se presente
+        var audio = contenitore.querySelector("audio");
+        if (audio) {
+          audio.play();
+        }
+
+        // Riproduci il video del contenitore, se presente
+        var video = contenitore.querySelector("video");
+        if (video) {
+          video.style.display = "block";
+          video.play();
+        }
+      }
+
+      function nascondiContenitori() {
+        // Nascondi tutti i contenitori
+        var contenitori = document.getElementsByClassName("contenitore");
+        for (var i = 0; i < contenitori.length; i++) {
+          contenitori[i].style.display = "none";
+          // Interrompi la riproduzione di tutti i suoni e i video
+          contenitori[i].querySelector("audio").pause();
+          contenitori[i].querySelector("audio").currentTime = 0;
+          var video = contenitori[i].querySelector("video");
+          if (video) {
+            video.style.display = "none";
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
